@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/popup.css" />
+</head>
+
+<body>
+    <main class="card">
+        <h1 class="title">tronclass 16x</h1>
+        <p class="subtitle emoji-only">ฅ^・ω・^ฅ</p>
+
+        <section class="actions">
+            <button id="startBtn" class="btn btn-primary" type="button">start</button>
+            <button id="stopBtn" class="btn btn-secondary" type="button">stop</button>
+        </section>
+
+        <section class="options">
+            <div class="option-group left" role="radiogroup" aria-label="mode selection">
+                <label class="check-item radio-item">
+                    <input type="radio" name="mode" value="auto" checked />
+                    <span>auto detection</span>
+                </label>
+
+                <label class="check-item radio-item">
+                    <input type="radio" name="mode" value="single" />
+                    <span>single video</span>
+                </label>
+
+                <div class="mode-row with-range">
+                    <label class="check-item radio-item">
+                        <input type="radio" name="mode" value="all" />
+                        <span>all video</span>
+                    </label>
+
+                    <div class="range-box" aria-label="指定 index 範圍">
+                        <input id="rangeStart" class="range-input" type="number" min="1" placeholder="from" />
+                        <span class="range-arrow" aria-hidden="true">→</span>
+                        <input id="rangeEnd" class="range-input" type="number" min="1" placeholder="to" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="option-group right">
+                <label class="check-item">
+                    <input id="extra123" type="checkbox" />
+                    <span>123</span>
+                </label>
+            </div> -->
+        </section>
+
+        <div id="statusText" class="status-text">mode: auto</div>
+        <a href="https://github.com/AC-AquaCrew/Yuntech-Tronclass-16x-Extensions" target="_blank" class="footer-text">tool made by ac</a>
+    </main>
+
+    <script src="/src/popup.js"></script>
+</body>
+
+</html>
