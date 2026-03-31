@@ -46,7 +46,7 @@
  1. 到你要看的課程的**章節**頁面，這時候你的網址應該長得像這樣`.../course/<一串數字>/content#/`
  2. 點開右上角的chrome擴充功能按鈕。
  3. 選擇`all video`。
- 4. 如果需要的話，可以填入想播放第幾部到第幾部影片（此功能目前未實作）。
+ 4. 如果需要的話，可以填入指定影片播放範圍（非必填）。
  5. 按`start`。
  6. 這時候如果一切正常，頁面會自動重新導向至第一部影片，且影片會開始加速播放，並且在播完後自動重新導向到下一個影片，以此往復直到所有都播完。
  7. 補充：當你按下`start`後，如果在不點這個分頁任何東西的情況下，可以點其它任何你電腦在跑的應用程式，就可以一邊掛網一邊做其他的事情ㄌ。
@@ -75,7 +75,6 @@
  - [ ] 進度條
  - [ ] 調整預設畫質
  - [ ] 誤暫停後重新開始
- - [ ] 調整自動播放多影片的範圍
  - [ ] 其它有趣的整活項目
 
 ## 支援性
@@ -162,7 +161,7 @@
     `.../course/<numbers>/content#/`
  2. Click the Chrome extension button at the top right.
  3. Select `all video`.
- 4. You can input the range of videos to play (this feature is not implemented yet).
+ 4. If you need, you can input the range of videos to play.
  5. Press `start`.
  6. If everything works, the page will automatically redirect to the first video, play it at accelerated speed, and then automatically move to the next video after finishing, repeating until all are done.
  7. Note: After pressing `start`, as long as you don't click anything in this tab, you can switch to other applications and AFK while doing other things.
@@ -192,7 +191,6 @@ In this mode, it will automatically detect whether to run single or all video mo
  - [ ] Progress bar.
  - [ ] Adjust default video quality.
  - [ ] Resume after accidental pause.
- - [ ] Adjust range for auto-playing multiple videos.
  - [ ] Other fun.
 
 ## Compatibility

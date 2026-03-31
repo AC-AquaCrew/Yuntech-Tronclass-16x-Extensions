@@ -107,7 +107,8 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
 
 	chrome.storage.local.set({
 		selectedMode: message.mode,
-		// extra123: Boolean(message.extra123)
+		startIndex: parseInt(message.start),
+		endIndex: parseInt(message.end)
 	});
 
 	let m = message.mode;
@@ -143,7 +144,11 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
 		});
 
 		// console.log(videoIds);
-		for (let i = 0; i < videoIds.length; i++) {
+		let end = message.end != "" ? parseInt(message.end) : videoIds.length;
+		for (let i = message.start != "" ? parseInt(message.start) - 1 : 0;
+		i < end;
+		i++) {
+			// console.log(`i = ${i}, end = ${end}`);
 			await goTo(courseId, videoIds[i]);
 			await new Promise(r => setTimeout(r, 5000));
 			try {
@@ -198,6 +203,8 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
 				console.error("injection error:", err);
 			};
 		};
+
+		openFloatingWindow(message.tabId, "完成ㄌ");
 
 	} else if (m === "single") {
 		// console.log("single");

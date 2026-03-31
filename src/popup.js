@@ -1,10 +1,10 @@
 const STORAGE_KEYS = {
     mode: "selectedMode",
-    // extra123: "extra123"
+    rangestart: "rangeStart",
+    rangeend: "rangeEnd"
 };
 
 const modeInputs = document.querySelectorAll('input[name="mode"]');
-// const extra123Input = document.getElementById("extra123");
 const startBtn = document.getElementById("startBtn");
 const stopBtn = document.getElementById("stopBtn");
 const statusText = document.getElementById("statusText");
@@ -31,7 +31,8 @@ function applyMode(mode) {
 function saveSettings() {
     chrome.storage.local.set({
         [STORAGE_KEYS.mode]: getSelectedMode(),
-        // [STORAGE_KEYS.extra123]: extra123Input.checked
+        [STORAGE_KEYS.rangestart]: rangeStart.value == "" ? "" : parseInt(rangeStart.value),
+        [STORAGE_KEYS.rangeend]: rangeEnd.value == "" ? "" : parseInt(rangeEnd.value)
     });
 };
 
@@ -39,11 +40,13 @@ function restoreSettings() {
     chrome.storage.local.get(
         {
             [STORAGE_KEYS.mode]: "auto",
-            // [STORAGE_KEYS.extra123]: false
+            [STORAGE_KEYS.rangestart]: "",
+            [STORAGE_KEYS.rangeend]: ""
         },
         (result) => {
             applyMode(result[STORAGE_KEYS.mode]);
-            // extra123Input.checked = Boolean(result[STORAGE_KEYS.extra123]);
+            rangeStart.value = result[STORAGE_KEYS.rangestart];
+            rangeEnd.value = result[STORAGE_KEYS.rangeend];
         }
     );
 };
@@ -55,7 +58,8 @@ modeInputs.forEach((input) => {
     });
 });
 
-// extra123Input.addEventListener("change", saveSettings);
+rangeStart.addEventListener("change", saveSettings);
+rangeEnd.addEventListener("change", saveSettings);
 
 startBtn.addEventListener("click", async () => {
     const mode = getSelectedMode();
@@ -73,14 +77,15 @@ startBtn.addEventListener("click", async () => {
             action: "run-start-script",
             tabId: tab.id,
             mode,
-            // extra123: extra123Input.checked
+            start: rangeStart.value,
+            end: rangeEnd.value
         });
 
         setStatus(`started: ${mode}`);
     } catch (error) {
         console.error("Start failed:", error);
         setStatus("start failed");
-    }
+    };
 });
 
 stopBtn.addEventListener("click", () => {
